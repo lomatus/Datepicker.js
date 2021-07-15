@@ -28,7 +28,7 @@ export default {
   separator: ',',
 
   serialize(date) {
-    let dateStr = date.toLocaleDateString()
+    let dateStr = new Date(date).toLocaleDateString()
 
     if (this.get('time')) {
       let timeStr = date.toLocaleTimeString()
@@ -56,9 +56,9 @@ export default {
    * Localizations
    */
   i18n: {
-    months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
-    weekdays: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
-    time: ['Time', 'Start', 'End']
+    months: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+    weekdays: ['周日','周一','周二','周三','周四','周五','周六'],
+    time: ['时间', '开始', '结束']
   },
 
   /**
@@ -100,8 +100,8 @@ export default {
     header: [
       '<header class="datepicker__header">',
         '<a class="datepicker__prev<%= (hasPrev) ? "" : " is-disabled" %>" data-prev>&lsaquo;</a>',
-        '<span class="datepicker__title"><%= renderMonthSelect() %></span>',
         '<span class="datepicker__title"><%= renderYearSelect() %></span>',
+        '<span class="datepicker__title"><%= renderMonthSelect() %></span>',
         '<a class="datepicker__next<%= (hasNext) ? "" : " is-disabled" %>" data-next>&rsaquo;</a>',
       '</header>'
     ].join(''),
